@@ -21,9 +21,22 @@ export default function CommentList ({ comments }) {
     // },[])
 
     const renderComments = comments.map(comment => {
+        // add flag
+        let content
+        if(comment.status === 'approved') {
+            content = comment.content
+        }
+        if(comment.status === 'pending') {
+            content = ' This comment is awaiting moderation'
+        }
+        if(comment.status === 'rejected') {
+            content = 'This comment has been rejected'
+        }
         return (
             <li key={comment.id}>
-                {comment.content}
+                {/* {comment.content} */}
+                {/* change to put a content inside it */}
+                {content}
             </li>
         )
     })
